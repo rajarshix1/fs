@@ -1,0 +1,37 @@
+//Single page app-New note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+
+server-->browser: main.css
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+
+server-->browser: spa.js
+
+browser--> server : HTTP GET data:image/png;base64.... , HTTP GET data:image/svg+xml;base64...., , HTTP GET data:image/svg+xml;base64,.... , HTTP GET data:image/svg+xml;base64,.... , HTTP GET data:image/svg+xml;base64,.... , 
+
+server-->browser: returns the requested png and svg files
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{"content":"ilman refresh","date":"2022-01-09T15:30:46.517Z"},...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+
+browser-->server: HTTP GET https://studies.cs.helsinki.fi/favicon.ico
+server-->browser: favicon.ico
+
+'Writing something in the form and submitting' :
+browser-->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+status code 201(created)
+response: {"message":"note created"}
+Only one request is sent to the server
+browser does not reload and stays on the same page. The message is added.

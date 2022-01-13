@@ -1,36 +1,30 @@
-import { useState } from "react";
-import "./App.css";
+import React, { useState } from 'react'
 
+
+const Statistics=({good,neutral,bad})=>(
+ good !=0 || bad!=0 ||neutral!=0? <div>
+ <p>good {good}</p>
+ <p>neutral {neutral}</p>
+ <p>bad {bad}</p>
+ <p>average {(good*1+neutral*0+bad*(-1))/(good+neutral+bad)}</p>
+ <p>positive {100*good/(good+neutral+bad)}%</p>
+</div> : <div>Nothing to display</div>
+)
 const App = () => {
-  let [click, setClick] = useState({
-    left: 0,
-    right: 0,
-  });
-  let [lorr, setLorr]=useState([])
-  const handleLeftClick = () => {
-    setClick({ ...click, left: click.left + 1 });
-    setLorr(lorr.concat('L'))
-  };
-  const handleRightClick = () => {
-    setClick({ ...click, right: click.right + 1 });
-    setLorr(lorr.concat('R'))
-
-  };
+  // save clicks of each button to its own state
+  let [good, setGood] = useState(0)
+  let [neutral, setNeutral] = useState(0)
+  let [bad, setBad] = useState(0)
 
   return (
-    <div className="App">
-      <h3>{lorr.join('-')}</h3>
-      <span>
-        <h4>
-          {click.left} {click.right} 
-        </h4>
-      </span>
-      <hr />
-      <button onClick={() => handleLeftClick()}>Left</button>
-      <button onClick={() => handleRightClick()}>Right</button>
-      {/* <button onClick={()=>setClick(click.right++)}>Right</button> */}
+    <div>
+<h1> give feedback</h1>
+<button onClick={()=>setGood(good++)}>good</button>
+<button onClick={()=>setNeutral(neutral++)}>neutral</button>
+<button onClick={()=>setBad(bad++)}>bad</button>
+    <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

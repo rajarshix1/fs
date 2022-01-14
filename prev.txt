@@ -1,0 +1,21 @@
+// const Display = ({count})=> <div>{count}</div>
+
+//   const Hello = ({name, age})=>{
+//     const bornYear=()=>
+//      new Date().getFullYear()-age
+  
+//   return(
+//     <div><p>Hello {name} , you're {age} years old</p>
+//     <p>so you were probably born in {bornYear()}</p></div>
+//   )
+// }
+// const Button=({handleClick, text})=> <button onClick={handleClick}>{text}</button>
+
+// let [count, setCount]=useState(0)
+// setTimeout(
+//   ()=>setCount(count+=1),10000
+// )
+// console.log(count)
+      {/* <Display count={count} /> */}
+      {/* <Hello name='Swagata' age={count} /> */}
+      {/* <Button handleClick={()=>{setCount(count+=1)}} text= 'Increase'/> */}
